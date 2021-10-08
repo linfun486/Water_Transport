@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.business.mapper.WtStartRegistrationMapper">
+    
+    <resultMap type="WtStartRegistration" id="WtStartRegistrationResult">
+        <result property="id"    column="id"    />
+        <result property="projectName"    column="project_name"    />
+        <result property="commencementDate"    column="commencement_date"    />
+        <result property="approvalUnit"    column="approval_unit"    />
+        <result property="approvalDate"    column="approval_date"    />
+        <result property="bidPromisor"    column="bid_promisor"    />
+        <result property="auditStatus"    column="audit_status"    />
+        <result property="auditPerson"    column="audit_person"    />
+        <result property="auditTime"    column="audit_time"    />
+        <result property="auditReason"    column="audit_reason"    />
+        <result property="createBy"    column="CREATE_BY"    />
+        <result property="createTime"    column="CREATE_TIME"    />
+        <result property="updateBy"    column="UPDATE_BY"    />
+        <result property="updateTime"    column="UPDATE_TIME"    />
+        <result property="remark"    column="remark"    />
+        <result property="delFlag"    column="del_flag"    />
+    </resultMap>
+
+    <sql id="selectWtStartRegistrationVo">
+        select id, project_name, commencement_date, approval_unit, approval_date, bid_promisor, audit_status, audit_person, audit_time, audit_reason, CREATE_BY, CREATE_TIME, UPDATE_BY, UPDATE_TIME, remark, del_flag from wt_start_registration
+    </sql>
+
+    <select id="selectWtStartRegistrationList" parameterType="WtStartRegistration" resultMap="WtStartRegistrationResult">
+        <include refid="selectWtStartRegistrationVo"/>
+        <where>  
+            <if test="projectName != null  and projectName != ''"> and project_name like concat('%', #{projectName}, '%')</if>
+            <if test="commencementDate != null "> and commencement_date = #{commencementDate}</if>
+            <if test="approvalUnit != null  and approvalUnit != ''"> and approval_unit = #{approvalUnit}</if>
+            <if test="approvalDate != null "> and approval_date = #{approvalDate}</if>
+            <if test="bidPromisor != null  and bidPromisor != ''"> and bid_promisor = #{bidPromisor}</if>
+            <if test="auditStatus != null  and auditStatus != ''"> and audit_status = #{auditStatus}</if>
+            <if test="auditPerson != null  and auditPerson != ''"> and audit_person = #{auditPerson}</if>
+            <if test="auditTime != null "> and audit_time = #{auditTime}</if>
+            <if test="auditReason != null  and auditReason != ''"> and audit_reason = #{auditReason}</if>
+            <if test="createBy != null  and createBy != ''"> and CREATE_BY = #{createBy}</if>
+            <if test="createTime != null "> and CREATE_TIME = #{createTime}</if>
+            <if test="updateBy != null  and updateBy != ''"> and UPDATE_BY = #{updateBy}</if>
+            <if test="updateTime != null "> and UPDATE_TIME = #{updateTime}</if>
+        </where>
+    </select>
+    
+    <select id="selectWtStartRegistrationById" parameterType="Long" resultMap="WtStartRegistrationResult">
+        <include refid="selectWtStartRegistrationVo"/>
+        where id = #{id}
+    </select>
+        
+    <insert id="insertWtStartRegistration" parameterType="WtStartRegistration" useGeneratedKeys="true" keyProperty="id">
+        insert into wt_start_registration
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="projectName != null">project_name,</if>
+            <if test="commencementDate != null">commencement_date,</if>
+            <if test="approvalUnit != null">approval_unit,</if>
+            <if test="approvalDate != null">approval_date,</if>
+            <if test="bidPromisor != null">bid_promisor,</if>
+            <if test="auditStatus != null">audit_status,</if>
+            <if test="auditPerson != null">audit_person,</if>
+            <if test="auditTime != null">audit_time,</if>
+            <if test="auditReason != null">audit_reason,</if>
+            <if test="createBy != null">CREATE_BY,</if>
+            <if test="createTime != null">CREATE_TIME,</if>
+            <if test="updateBy != null">UPDATE_BY,</if>
+            <if test="updateTime != null">UPDATE_TIME,</if>
+            <if test="remark != null">remark,</if>
+            <if test="delFlag != null">del_flag,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="projectName != null">#{projectName},</if>
+            <if test="commencementDate != null">#{commencementDate},</if>
+            <if test="approvalUnit != null">#{approvalUnit},</if>
+            <if test="approvalDate != null">#{approvalDate},</if>
+            <if test="bidPromisor != null">#{bidPromisor},</if>
+            <if test="auditStatus != null">#{auditStatus},</if>
+            <if test="auditPerson != null">#{auditPerson},</if>
+            <if test="auditTime != null">#{auditTime},</if>
+            <if test="auditReason != null">#{auditReason},</if>
+            <if test="createBy != null">#{createBy},</if>
+            <if test="createTime != null">#{createTime},</if>
+            <if test="updateBy != null">#{updateBy},</if>
+            <if test="updateTime != null">#{updateTime},</if>
+            <if test="remark != null">#{remark},</if>
+            <if test="delFlag != null">#{delFlag},</if>
+         </trim>
+    </insert>
+
+    <update id="updateWtStartRegistration" parameterType="WtStartRegistration">
+        update wt_start_registration
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="projectName != null">project_name = #{projectName},</if>
+            <if test="commencementDate != null">commencement_date = #{commencementDate},</if>
+            <if test="approvalUnit != null">approval_unit = #{approvalUnit},</if>
+            <if test="approvalDate != null">approval_date = #{approvalDate},</if>
+            <if test="bidPromisor != null">bid_promisor = #{bidPromisor},</if>
+            <if test="auditStatus != null">audit_status = #{auditStatus},</if>
+            <if test="auditPerson != null">audit_person = #{auditPerson},</if>
+            <if test="auditTime != null">audit_time = #{auditTime},</if>
+            <if test="auditReason != null">audit_reason = #{auditReason},</if>
+            <if test="createBy != null">CREATE_BY = #{createBy},</if>
+            <if test="createTime != null">CREATE_TIME = #{createTime},</if>
+            <if test="updateBy != null">UPDATE_BY = #{updateBy},</if>
+            <if test="updateTime != null">UPDATE_TIME = #{updateTime},</if>
+            <if test="remark != null">remark = #{remark},</if>
+            <if test="delFlag != null">del_flag = #{delFlag},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteWtStartRegistrationById" parameterType="Long">
+        delete from wt_start_registration where id = #{id}
+    </delete>
+
+    <delete id="deleteWtStartRegistrationByIds" parameterType="String">
+        delete from wt_start_registration where id in 
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+</mapper>

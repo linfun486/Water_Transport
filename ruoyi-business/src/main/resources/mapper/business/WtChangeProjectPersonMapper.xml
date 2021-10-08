@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.business.mapper.WtChangeProjectPersonMapper">
+    
+    <resultMap type="WtChangeProjectPerson" id="WtChangeProjectPersonResult">
+        <result property="id"    column="id"    />
+        <result property="postType"    column="post_type"    />
+        <result property="name"    column="name"    />
+        <result property="contact"    column="contact"    />
+        <result property="documentType"    column="document_type"    />
+        <result property="cardno"    column="cardno"    />
+        <result property="jobTitle"    column="job_title"    />
+        <result property="certificateNo"    column="certificate_no"    />
+        <result property="certificateType"    column="certificate_type"    />
+        <result property="certificateFullName"    column="certificate_full_name"    />
+        <result property="certificateLevel"    column="certificate_level"    />
+        <result property="workingYears"    column="working_years"    />
+        <result property="registrationTime"    column="registration_time"    />
+        <result property="auditStatus"    column="audit_status"    />
+        <result property="auditPerson"    column="audit_person"    />
+        <result property="auditTime"    column="audit_time"    />
+        <result property="auditReason"    column="audit_reason"    />
+        <result property="createBy"    column="CREATE_BY"    />
+        <result property="createTime"    column="CREATE_TIME"    />
+        <result property="updateBy"    column="UPDATE_BY"    />
+        <result property="updateTime"    column="UPDATE_TIME"    />
+        <result property="remark"    column="remark"    />
+        <result property="delFlag"    column="del_flag"    />
+    </resultMap>
+
+    <sql id="selectWtChangeProjectPersonVo">
+        select id, post_type, name, contact, document_type, cardno, job_title, certificate_no, certificate_type, certificate_full_name, certificate_level, working_years, registration_time, audit_status, audit_person, audit_time, audit_reason, CREATE_BY, CREATE_TIME, UPDATE_BY, UPDATE_TIME, remark, del_flag from wt_change_project_person
+    </sql>
+
+    <select id="selectWtChangeProjectPersonList" parameterType="WtChangeProjectPerson" resultMap="WtChangeProjectPersonResult">
+        <include refid="selectWtChangeProjectPersonVo"/>
+        <where>  
+            <if test="postType != null  and postType != ''"> and post_type = #{postType}</if>
+            <if test="name != null  and name != ''"> and name like concat('%', #{name}, '%')</if>
+            <if test="contact != null  and contact != ''"> and contact = #{contact}</if>
+            <if test="documentType != null  and documentType != ''"> and document_type = #{documentType}</if>
+            <if test="cardno != null  and cardno != ''"> and cardno = #{cardno}</if>
+            <if test="jobTitle != null  and jobTitle != ''"> and job_title = #{jobTitle}</if>
+            <if test="certificateNo != null  and certificateNo != ''"> and certificate_no = #{certificateNo}</if>
+            <if test="certificateType != null  and certificateType != ''"> and certificate_type = #{certificateType}</if>
+            <if test="certificateFullName != null  and certificateFullName != ''"> and certificate_full_name like concat('%', #{certificateFullName}, '%')</if>
+            <if test="certificateLevel != null  and certificateLevel != ''"> and certificate_level = #{certificateLevel}</if>
+            <if test="workingYears != null  and workingYears != ''"> and working_years = #{workingYears}</if>
+            <if test="registrationTime != null "> and registration_time = #{registrationTime}</if>
+            <if test="auditStatus != null  and auditStatus != ''"> and audit_status = #{auditStatus}</if>
+            <if test="auditPerson != null  and auditPerson != ''"> and audit_person = #{auditPerson}</if>
+            <if test="auditTime != null "> and audit_time = #{auditTime}</if>
+            <if test="auditReason != null  and auditReason != ''"> and audit_reason = #{auditReason}</if>
+            <if test="createBy != null  and createBy != ''"> and CREATE_BY = #{createBy}</if>
+            <if test="createTime != null "> and CREATE_TIME = #{createTime}</if>
+            <if test="updateBy != null  and updateBy != ''"> and UPDATE_BY = #{updateBy}</if>
+            <if test="updateTime != null "> and UPDATE_TIME = #{updateTime}</if>
+        </where>
+    </select>
+    
+    <select id="selectWtChangeProjectPersonById" parameterType="Long" resultMap="WtChangeProjectPersonResult">
+        <include refid="selectWtChangeProjectPersonVo"/>
+        where id = #{id}
+    </select>
+        
+    <insert id="insertWtChangeProjectPerson" parameterType="WtChangeProjectPerson" useGeneratedKeys="true" keyProperty="id">
+        insert into wt_change_project_person
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="postType != null">post_type,</if>
+            <if test="name != null">name,</if>
+            <if test="contact != null">contact,</if>
+            <if test="documentType != null">document_type,</if>
+            <if test="cardno != null">cardno,</if>
+            <if test="jobTitle != null">job_title,</if>
+            <if test="certificateNo != null">certificate_no,</if>
+            <if test="certificateType != null">certificate_type,</if>
+            <if test="certificateFullName != null">certificate_full_name,</if>
+            <if test="certificateLevel != null">certificate_level,</if>
+            <if test="workingYears != null">working_years,</if>
+            <if test="registrationTime != null">registration_time,</if>
+            <if test="auditStatus != null">audit_status,</if>
+            <if test="auditPerson != null">audit_person,</if>
+            <if test="auditTime != null">audit_time,</if>
+            <if test="auditReason != null">audit_reason,</if>
+            <if test="createBy != null">CREATE_BY,</if>
+            <if test="createTime != null">CREATE_TIME,</if>
+            <if test="updateBy != null">UPDATE_BY,</if>
+            <if test="updateTime != null">UPDATE_TIME,</if>
+            <if test="remark != null">remark,</if>
+            <if test="delFlag != null">del_flag,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="postType != null">#{postType},</if>
+            <if test="name != null">#{name},</if>
+            <if test="contact != null">#{contact},</if>
+            <if test="documentType != null">#{documentType},</if>
+            <if test="cardno != null">#{cardno},</if>
+            <if test="jobTitle != null">#{jobTitle},</if>
+            <if test="certificateNo != null">#{certificateNo},</if>
+            <if test="certificateType != null">#{certificateType},</if>
+            <if test="certificateFullName != null">#{certificateFullName},</if>
+            <if test="certificateLevel != null">#{certificateLevel},</if>
+            <if test="workingYears != null">#{workingYears},</if>
+            <if test="registrationTime != null">#{registrationTime},</if>
+            <if test="auditStatus != null">#{auditStatus},</if>
+            <if test="auditPerson != null">#{auditPerson},</if>
+            <if test="auditTime != null">#{auditTime},</if>
+            <if test="auditReason != null">#{auditReason},</if>
+            <if test="createBy != null">#{createBy},</if>
+            <if test="createTime != null">#{createTime},</if>
+            <if test="updateBy != null">#{updateBy},</if>
+            <if test="updateTime != null">#{updateTime},</if>
+            <if test="remark != null">#{remark},</if>
+            <if test="delFlag != null">#{delFlag},</if>
+         </trim>
+    </insert>
+
+    <update id="updateWtChangeProjectPerson" parameterType="WtChangeProjectPerson">
+        update wt_change_project_person
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="postType != null">post_type = #{postType},</if>
+            <if test="name != null">name = #{name},</if>
+            <if test="contact != null">contact = #{contact},</if>
+            <if test="documentType != null">document_type = #{documentType},</if>
+            <if test="cardno != null">cardno = #{cardno},</if>
+            <if test="jobTitle != null">job_title = #{jobTitle},</if>
+            <if test="certificateNo != null">certificate_no = #{certificateNo},</if>
+            <if test="certificateType != null">certificate_type = #{certificateType},</if>
+            <if test="certificateFullName != null">certificate_full_name = #{certificateFullName},</if>
+            <if test="certificateLevel != null">certificate_level = #{certificateLevel},</if>
+            <if test="workingYears != null">working_years = #{workingYears},</if>
+            <if test="registrationTime != null">registration_time = #{registrationTime},</if>
+            <if test="auditStatus != null">audit_status = #{auditStatus},</if>
+            <if test="auditPerson != null">audit_person = #{auditPerson},</if>
+            <if test="auditTime != null">audit_time = #{auditTime},</if>
+            <if test="auditReason != null">audit_reason = #{auditReason},</if>
+            <if test="createBy != null">CREATE_BY = #{createBy},</if>
+            <if test="createTime != null">CREATE_TIME = #{createTime},</if>
+            <if test="updateBy != null">UPDATE_BY = #{updateBy},</if>
+            <if test="updateTime != null">UPDATE_TIME = #{updateTime},</if>
+            <if test="remark != null">remark = #{remark},</if>
+            <if test="delFlag != null">del_flag = #{delFlag},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteWtChangeProjectPersonById" parameterType="Long">
+        delete from wt_change_project_person where id = #{id}
+    </delete>
+
+    <delete id="deleteWtChangeProjectPersonByIds" parameterType="String">
+        delete from wt_change_project_person where id in 
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+</mapper>

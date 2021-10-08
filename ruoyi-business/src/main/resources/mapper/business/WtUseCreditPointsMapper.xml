@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.business.mapper.WtUseCreditPointsMapper">
+    
+    <resultMap type="WtUseCreditPoints" id="WtUseCreditPointsResult">
+        <result property="id"    column="id"    />
+        <result property="cpName"    column="cp_name"    />
+        <result property="cpCode"    column="cp_code"    />
+        <result property="cpUseCreditPoints"    column="cp_use_credit_points"    />
+        <result property="cpUselevel"    column="cp_uselevel"    />
+        <result property="pmName"    column="pm_name"    />
+        <result property="pmCardno"    column="pm_cardno"    />
+        <result property="pmUseCreditPoints"    column="pm_use_credit_points"    />
+        <result property="pmUselevel"    column="pm_uselevel"    />
+        <result property="pcName"    column="pc_name"    />
+        <result property="pcCardno"    column="pc_cardno"    />
+        <result property="pcUseCreditPoints"    column="pc_use_credit_points"    />
+        <result property="pcUselevel"    column="pc_uselevel"    />
+        <result property="plName"    column="pl_name"    />
+        <result property="plCardno"    column="pl_cardno"    />
+        <result property="plUseCreditPoints"    column="pl_use_credit_points"    />
+        <result property="plUselevel"    column="pl_uselevel"    />
+        <result property="ciName"    column="ci_name"    />
+        <result property="ciCardno"    column="ci_cardno"    />
+        <result property="ciUseCreditPoints"    column="ci_use_credit_points"    />
+        <result property="ciUselevel"    column="ci_uselevel"    />
+        <result property="ciProfessionalNo"    column="ci_professional_no"    />
+        <result property="ciCertificateNo"    column="ci_certificate_no"    />
+        <result property="ldName"    column="ld_name"    />
+        <result property="ldCardno"    column="ld_cardno"    />
+        <result property="ldUseCreditPoints"    column="ld_use_credit_points"    />
+        <result property="ldUselevel"    column="ld_uselevel"    />
+        <result property="ldProfessionalNo"    column="ld_professional_no"    />
+        <result property="ldCertificateNo"    column="ld_certificate_no"    />
+        <result property="createBy"    column="CREATE_BY"    />
+        <result property="createTime"    column="CREATE_TIME"    />
+        <result property="updateBy"    column="UPDATE_BY"    />
+        <result property="updateTime"    column="UPDATE_TIME"    />
+        <result property="remark"    column="remark"    />
+        <result property="delFlag"    column="del_Flag"    />
+    </resultMap>
+
+    <sql id="selectWtUseCreditPointsVo">
+        select id, cp_name, cp_code, cp_use_credit_points, cp_uselevel, pm_name, pm_cardno, pm_use_credit_points, pm_uselevel, pc_name, pc_cardno, pc_use_credit_points, pc_uselevel, pl_name, pl_cardno, pl_use_credit_points, pl_uselevel, ci_name, ci_cardno, ci_use_credit_points, ci_uselevel, ci_professional_no, ci_certificate_no, ld_name, ld_cardno, ld_use_credit_points, ld_uselevel, ld_professional_no, ld_certificate_no, CREATE_BY, CREATE_TIME, UPDATE_BY, UPDATE_TIME, remark, del_Flag from wt_use_credit_points
+    </sql>
+
+    <select id="selectWtUseCreditPointsList" parameterType="WtUseCreditPoints" resultMap="WtUseCreditPointsResult">
+        <include refid="selectWtUseCreditPointsVo"/>
+        <where>  
+            <if test="cpName != null  and cpName != ''"> and cp_name like concat('%', #{cpName}, '%')</if>
+            <if test="cpCode != null  and cpCode != ''"> and cp_code = #{cpCode}</if>
+            <if test="cpUseCreditPoints != null  and cpUseCreditPoints != ''"> and cp_use_credit_points = #{cpUseCreditPoints}</if>
+            <if test="cpUselevel != null  and cpUselevel != ''"> and cp_uselevel = #{cpUselevel}</if>
+            <if test="pmName != null  and pmName != ''"> and pm_name like concat('%', #{pmName}, '%')</if>
+            <if test="pmCardno != null  and pmCardno != ''"> and pm_cardno = #{pmCardno}</if>
+            <if test="pmUseCreditPoints != null  and pmUseCreditPoints != ''"> and pm_use_credit_points = #{pmUseCreditPoints}</if>
+            <if test="pmUselevel != null  and pmUselevel != ''"> and pm_uselevel = #{pmUselevel}</if>
+            <if test="pcName != null  and pcName != ''"> and pc_name like concat('%', #{pcName}, '%')</if>
+            <if test="pcCardno != null  and pcCardno != ''"> and pc_cardno = #{pcCardno}</if>
+            <if test="pcUseCreditPoints != null  and pcUseCreditPoints != ''"> and pc_use_credit_points = #{pcUseCreditPoints}</if>
+            <if test="pcUselevel != null  and pcUselevel != ''"> and pc_uselevel = #{pcUselevel}</if>
+            <if test="plName != null  and plName != ''"> and pl_name like concat('%', #{plName}, '%')</if>
+            <if test="plCardno != null  and plCardno != ''"> and pl_cardno = #{plCardno}</if>
+            <if test="plUseCreditPoints != null  and plUseCreditPoints != ''"> and pl_use_credit_points = #{plUseCreditPoints}</if>
+            <if test="plUselevel != null  and plUselevel != ''"> and pl_uselevel = #{plUselevel}</if>
+            <if test="ciName != null  and ciName != ''"> and ci_name like concat('%', #{ciName}, '%')</if>
+            <if test="ciCardno != null  and ciCardno != ''"> and ci_cardno = #{ciCardno}</if>
+            <if test="ciUseCreditPoints != null  and ciUseCreditPoints != ''"> and ci_use_credit_points = #{ciUseCreditPoints}</if>
+            <if test="ciUselevel != null  and ciUselevel != ''"> and ci_uselevel = #{ciUselevel}</if>
+            <if test="ciProfessionalNo != null  and ciProfessionalNo != ''"> and ci_professional_no = #{ciProfessionalNo}</if>
+            <if test="ciCertificateNo != null  and ciCertificateNo != ''"> and ci_certificate_no = #{ciCertificateNo}</if>
+            <if test="ldName != null  and ldName != ''"> and ld_name like concat('%', #{ldName}, '%')</if>
+            <if test="ldCardno != null  and ldCardno != ''"> and ld_cardno = #{ldCardno}</if>
+            <if test="ldUseCreditPoints != null  and ldUseCreditPoints != ''"> and ld_use_credit_points = #{ldUseCreditPoints}</if>
+            <if test="ldUselevel != null  and ldUselevel != ''"> and ld_uselevel = #{ldUselevel}</if>
+            <if test="ldProfessionalNo != null  and ldProfessionalNo != ''"> and ld_professional_no = #{ldProfessionalNo}</if>
+            <if test="ldCertificateNo != null  and ldCertificateNo != ''"> and ld_certificate_no = #{ldCertificateNo}</if>
+            <if test="createBy != null  and createBy != ''"> and CREATE_BY = #{createBy}</if>
+            <if test="createTime != null "> and CREATE_TIME = #{createTime}</if>
+            <if test="updateBy != null  and updateBy != ''"> and UPDATE_BY = #{updateBy}</if>
+            <if test="updateTime != null "> and UPDATE_TIME = #{updateTime}</if>
+            <if test="delFlag != null  and delFlag != ''"> and del_Flag = #{delFlag}</if>
+        </where>
+    </select>
+    
+    <select id="selectWtUseCreditPointsById" parameterType="Long" resultMap="WtUseCreditPointsResult">
+        <include refid="selectWtUseCreditPointsVo"/>
+        where id = #{id}
+    </select>
+        
+    <insert id="insertWtUseCreditPoints" parameterType="WtUseCreditPoints" useGeneratedKeys="true" keyProperty="id">
+        insert into wt_use_credit_points
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="cpName != null">cp_name,</if>
+            <if test="cpCode != null">cp_code,</if>
+            <if test="cpUseCreditPoints != null">cp_use_credit_points,</if>
+            <if test="cpUselevel != null">cp_uselevel,</if>
+            <if test="pmName != null">pm_name,</if>
+            <if test="pmCardno != null">pm_cardno,</if>
+            <if test="pmUseCreditPoints != null">pm_use_credit_points,</if>
+            <if test="pmUselevel != null">pm_uselevel,</if>
+            <if test="pcName != null">pc_name,</if>
+            <if test="pcCardno != null">pc_cardno,</if>
+            <if test="pcUseCreditPoints != null">pc_use_credit_points,</if>
+            <if test="pcUselevel != null">pc_uselevel,</if>
+            <if test="plName != null">pl_name,</if>
+            <if test="plCardno != null">pl_cardno,</if>
+            <if test="plUseCreditPoints != null">pl_use_credit_points,</if>
+            <if test="plUselevel != null">pl_uselevel,</if>
+            <if test="ciName != null">ci_name,</if>
+            <if test="ciCardno != null">ci_cardno,</if>
+            <if test="ciUseCreditPoints != null">ci_use_credit_points,</if>
+            <if test="ciUselevel != null">ci_uselevel,</if>
+            <if test="ciProfessionalNo != null">ci_professional_no,</if>
+            <if test="ciCertificateNo != null">ci_certificate_no,</if>
+            <if test="ldName != null">ld_name,</if>
+            <if test="ldCardno != null">ld_cardno,</if>
+            <if test="ldUseCreditPoints != null">ld_use_credit_points,</if>
+            <if test="ldUselevel != null">ld_uselevel,</if>
+            <if test="ldProfessionalNo != null">ld_professional_no,</if>
+            <if test="ldCertificateNo != null">ld_certificate_no,</if>
+            <if test="createBy != null">CREATE_BY,</if>
+            <if test="createTime != null">CREATE_TIME,</if>
+            <if test="updateBy != null">UPDATE_BY,</if>
+            <if test="updateTime != null">UPDATE_TIME,</if>
+            <if test="remark != null">remark,</if>
+            <if test="delFlag != null">del_Flag,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="cpName != null">#{cpName},</if>
+            <if test="cpCode != null">#{cpCode},</if>
+            <if test="cpUseCreditPoints != null">#{cpUseCreditPoints},</if>
+            <if test="cpUselevel != null">#{cpUselevel},</if>
+            <if test="pmName != null">#{pmName},</if>
+            <if test="pmCardno != null">#{pmCardno},</if>
+            <if test="pmUseCreditPoints != null">#{pmUseCreditPoints},</if>
+            <if test="pmUselevel != null">#{pmUselevel},</if>
+            <if test="pcName != null">#{pcName},</if>
+            <if test="pcCardno != null">#{pcCardno},</if>
+            <if test="pcUseCreditPoints != null">#{pcUseCreditPoints},</if>
+            <if test="pcUselevel != null">#{pcUselevel},</if>
+            <if test="plName != null">#{plName},</if>
+            <if test="plCardno != null">#{plCardno},</if>
+            <if test="plUseCreditPoints != null">#{plUseCreditPoints},</if>
+            <if test="plUselevel != null">#{plUselevel},</if>
+            <if test="ciName != null">#{ciName},</if>
+            <if test="ciCardno != null">#{ciCardno},</if>
+            <if test="ciUseCreditPoints != null">#{ciUseCreditPoints},</if>
+            <if test="ciUselevel != null">#{ciUselevel},</if>
+            <if test="ciProfessionalNo != null">#{ciProfessionalNo},</if>
+            <if test="ciCertificateNo != null">#{ciCertificateNo},</if>
+            <if test="ldName != null">#{ldName},</if>
+            <if test="ldCardno != null">#{ldCardno},</if>
+            <if test="ldUseCreditPoints != null">#{ldUseCreditPoints},</if>
+            <if test="ldUselevel != null">#{ldUselevel},</if>
+            <if test="ldProfessionalNo != null">#{ldProfessionalNo},</if>
+            <if test="ldCertificateNo != null">#{ldCertificateNo},</if>
+            <if test="createBy != null">#{createBy},</if>
+            <if test="createTime != null">#{createTime},</if>
+            <if test="updateBy != null">#{updateBy},</if>
+            <if test="updateTime != null">#{updateTime},</if>
+            <if test="remark != null">#{remark},</if>
+            <if test="delFlag != null">#{delFlag},</if>
+         </trim>
+    </insert>
+
+    <update id="updateWtUseCreditPoints" parameterType="WtUseCreditPoints">
+        update wt_use_credit_points
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="cpName != null">cp_name = #{cpName},</if>
+            <if test="cpCode != null">cp_code = #{cpCode},</if>
+            <if test="cpUseCreditPoints != null">cp_use_credit_points = #{cpUseCreditPoints},</if>
+            <if test="cpUselevel != null">cp_uselevel = #{cpUselevel},</if>
+            <if test="pmName != null">pm_name = #{pmName},</if>
+            <if test="pmCardno != null">pm_cardno = #{pmCardno},</if>
+            <if test="pmUseCreditPoints != null">pm_use_credit_points = #{pmUseCreditPoints},</if>
+            <if test="pmUselevel != null">pm_uselevel = #{pmUselevel},</if>
+            <if test="pcName != null">pc_name = #{pcName},</if>
+            <if test="pcCardno != null">pc_cardno = #{pcCardno},</if>
+            <if test="pcUseCreditPoints != null">pc_use_credit_points = #{pcUseCreditPoints},</if>
+            <if test="pcUselevel != null">pc_uselevel = #{pcUselevel},</if>
+            <if test="plName != null">pl_name = #{plName},</if>
+            <if test="plCardno != null">pl_cardno = #{plCardno},</if>
+            <if test="plUseCreditPoints != null">pl_use_credit_points = #{plUseCreditPoints},</if>
+            <if test="plUselevel != null">pl_uselevel = #{plUselevel},</if>
+            <if test="ciName != null">ci_name = #{ciName},</if>
+            <if test="ciCardno != null">ci_cardno = #{ciCardno},</if>
+            <if test="ciUseCreditPoints != null">ci_use_credit_points = #{ciUseCreditPoints},</if>
+            <if test="ciUselevel != null">ci_uselevel = #{ciUselevel},</if>
+            <if test="ciProfessionalNo != null">ci_professional_no = #{ciProfessionalNo},</if>
+            <if test="ciCertificateNo != null">ci_certificate_no = #{ciCertificateNo},</if>
+            <if test="ldName != null">ld_name = #{ldName},</if>
+            <if test="ldCardno != null">ld_cardno = #{ldCardno},</if>
+            <if test="ldUseCreditPoints != null">ld_use_credit_points = #{ldUseCreditPoints},</if>
+            <if test="ldUselevel != null">ld_uselevel = #{ldUselevel},</if>
+            <if test="ldProfessionalNo != null">ld_professional_no = #{ldProfessionalNo},</if>
+            <if test="ldCertificateNo != null">ld_certificate_no = #{ldCertificateNo},</if>
+            <if test="createBy != null">CREATE_BY = #{createBy},</if>
+            <if test="createTime != null">CREATE_TIME = #{createTime},</if>
+            <if test="updateBy != null">UPDATE_BY = #{updateBy},</if>
+            <if test="updateTime != null">UPDATE_TIME = #{updateTime},</if>
+            <if test="remark != null">remark = #{remark},</if>
+            <if test="delFlag != null">del_Flag = #{delFlag},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteWtUseCreditPointsById" parameterType="Long">
+        delete from wt_use_credit_points where id = #{id}
+    </delete>
+
+    <delete id="deleteWtUseCreditPointsByIds" parameterType="String">
+        delete from wt_use_credit_points where id in 
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+</mapper>

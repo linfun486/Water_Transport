@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.business.mapper.WtPaymentRecordsMapper">
+    
+    <resultMap type="WtPaymentRecords" id="WtPaymentRecordsResult">
+        <result property="id"    column="id"    />
+        <result property="paymentTime"    column="payment_time"    />
+        <result property="paymentAmount"    column="payment_amount"    />
+        <result property="paymentUnit"    column="payment_unit"    />
+        <result property="paymentAccountName"    column="payment_account_name"    />
+        <result property="paymentAccount"    column="payment_account"    />
+        <result property="paymentBank"    column="payment_bank"    />
+        <result property="sourceFunds"    column="source_funds"    />
+        <result property="receivingUnit"    column="receiving_unit"    />
+        <result property="receivingAccountName"    column="receiving_account_name"    />
+        <result property="receivingAccount"    column="receiving_account"    />
+        <result property="receivingBank"    column="receiving_bank"    />
+        <result property="purpose"    column="purpose"    />
+        <result property="otherNotes"    column="other_notes"    />
+        <result property="createBy"    column="CREATE_BY"    />
+        <result property="createTime"    column="CREATE_TIME"    />
+        <result property="updateBy"    column="UPDATE_BY"    />
+        <result property="updateTime"    column="UPDATE_TIME"    />
+        <result property="remark"    column="remark"    />
+        <result property="delFlag"    column="del_flag"    />
+    </resultMap>
+
+    <sql id="selectWtPaymentRecordsVo">
+        select id, payment_time, payment_amount, payment_unit, payment_account_name, payment_account, payment_bank, source_funds, receiving_unit, receiving_account_name, receiving_account, receiving_bank, purpose, other_notes, CREATE_BY, CREATE_TIME, UPDATE_BY, UPDATE_TIME, remark, del_flag from wt_payment_records
+    </sql>
+
+    <select id="selectWtPaymentRecordsList" parameterType="WtPaymentRecords" resultMap="WtPaymentRecordsResult">
+        <include refid="selectWtPaymentRecordsVo"/>
+        <where>  
+            <if test="paymentTime != null "> and payment_time = #{paymentTime}</if>
+            <if test="paymentAmount != null  and paymentAmount != ''"> and payment_amount = #{paymentAmount}</if>
+            <if test="paymentUnit != null  and paymentUnit != ''"> and payment_unit = #{paymentUnit}</if>
+            <if test="paymentAccountName != null  and paymentAccountName != ''"> and payment_account_name like concat('%', #{paymentAccountName}, '%')</if>
+            <if test="paymentAccount != null  and paymentAccount != ''"> and payment_account = #{paymentAccount}</if>
+            <if test="paymentBank != null  and paymentBank != ''"> and payment_bank = #{paymentBank}</if>
+            <if test="sourceFunds != null  and sourceFunds != ''"> and source_funds = #{sourceFunds}</if>
+            <if test="receivingUnit != null  and receivingUnit != ''"> and receiving_unit = #{receivingUnit}</if>
+            <if test="receivingAccountName != null  and receivingAccountName != ''"> and receiving_account_name like concat('%', #{receivingAccountName}, '%')</if>
+            <if test="receivingAccount != null  and receivingAccount != ''"> and receiving_account = #{receivingAccount}</if>
+            <if test="receivingBank != null  and receivingBank != ''"> and receiving_bank = #{receivingBank}</if>
+            <if test="purpose != null  and purpose != ''"> and purpose = #{purpose}</if>
+            <if test="otherNotes != null  and otherNotes != ''"> and other_notes = #{otherNotes}</if>
+            <if test="createBy != null  and createBy != ''"> and CREATE_BY = #{createBy}</if>
+            <if test="createTime != null "> and CREATE_TIME = #{createTime}</if>
+            <if test="updateBy != null  and updateBy != ''"> and UPDATE_BY = #{updateBy}</if>
+            <if test="updateTime != null "> and UPDATE_TIME = #{updateTime}</if>
+        </where>
+    </select>
+    
+    <select id="selectWtPaymentRecordsById" parameterType="Long" resultMap="WtPaymentRecordsResult">
+        <include refid="selectWtPaymentRecordsVo"/>
+        where id = #{id}
+    </select>
+        
+    <insert id="insertWtPaymentRecords" parameterType="WtPaymentRecords" useGeneratedKeys="true" keyProperty="id">
+        insert into wt_payment_records
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="paymentTime != null">payment_time,</if>
+            <if test="paymentAmount != null">payment_amount,</if>
+            <if test="paymentUnit != null">payment_unit,</if>
+            <if test="paymentAccountName != null">payment_account_name,</if>
+            <if test="paymentAccount != null">payment_account,</if>
+            <if test="paymentBank != null">payment_bank,</if>
+            <if test="sourceFunds != null">source_funds,</if>
+            <if test="receivingUnit != null">receiving_unit,</if>
+            <if test="receivingAccountName != null">receiving_account_name,</if>
+            <if test="receivingAccount != null">receiving_account,</if>
+            <if test="receivingBank != null">receiving_bank,</if>
+            <if test="purpose != null">purpose,</if>
+            <if test="otherNotes != null">other_notes,</if>
+            <if test="createBy != null">CREATE_BY,</if>
+            <if test="createTime != null">CREATE_TIME,</if>
+            <if test="updateBy != null">UPDATE_BY,</if>
+            <if test="updateTime != null">UPDATE_TIME,</if>
+            <if test="remark != null">remark,</if>
+            <if test="delFlag != null">del_flag,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="paymentTime != null">#{paymentTime},</if>
+            <if test="paymentAmount != null">#{paymentAmount},</if>
+            <if test="paymentUnit != null">#{paymentUnit},</if>
+            <if test="paymentAccountName != null">#{paymentAccountName},</if>
+            <if test="paymentAccount != null">#{paymentAccount},</if>
+            <if test="paymentBank != null">#{paymentBank},</if>
+            <if test="sourceFunds != null">#{sourceFunds},</if>
+            <if test="receivingUnit != null">#{receivingUnit},</if>
+            <if test="receivingAccountName != null">#{receivingAccountName},</if>
+            <if test="receivingAccount != null">#{receivingAccount},</if>
+            <if test="receivingBank != null">#{receivingBank},</if>
+            <if test="purpose != null">#{purpose},</if>
+            <if test="otherNotes != null">#{otherNotes},</if>
+            <if test="createBy != null">#{createBy},</if>
+            <if test="createTime != null">#{createTime},</if>
+            <if test="updateBy != null">#{updateBy},</if>
+            <if test="updateTime != null">#{updateTime},</if>
+            <if test="remark != null">#{remark},</if>
+            <if test="delFlag != null">#{delFlag},</if>
+         </trim>
+    </insert>
+
+    <update id="updateWtPaymentRecords" parameterType="WtPaymentRecords">
+        update wt_payment_records
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="paymentTime != null">payment_time = #{paymentTime},</if>
+            <if test="paymentAmount != null">payment_amount = #{paymentAmount},</if>
+            <if test="paymentUnit != null">payment_unit = #{paymentUnit},</if>
+            <if test="paymentAccountName != null">payment_account_name = #{paymentAccountName},</if>
+            <if test="paymentAccount != null">payment_account = #{paymentAccount},</if>
+            <if test="paymentBank != null">payment_bank = #{paymentBank},</if>
+            <if test="sourceFunds != null">source_funds = #{sourceFunds},</if>
+            <if test="receivingUnit != null">receiving_unit = #{receivingUnit},</if>
+            <if test="receivingAccountName != null">receiving_account_name = #{receivingAccountName},</if>
+            <if test="receivingAccount != null">receiving_account = #{receivingAccount},</if>
+            <if test="receivingBank != null">receiving_bank = #{receivingBank},</if>
+            <if test="purpose != null">purpose = #{purpose},</if>
+            <if test="otherNotes != null">other_notes = #{otherNotes},</if>
+            <if test="createBy != null">CREATE_BY = #{createBy},</if>
+            <if test="createTime != null">CREATE_TIME = #{createTime},</if>
+            <if test="updateBy != null">UPDATE_BY = #{updateBy},</if>
+            <if test="updateTime != null">UPDATE_TIME = #{updateTime},</if>
+            <if test="remark != null">remark = #{remark},</if>
+            <if test="delFlag != null">del_flag = #{delFlag},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteWtPaymentRecordsById" parameterType="Long">
+        delete from wt_payment_records where id = #{id}
+    </delete>
+
+    <delete id="deleteWtPaymentRecordsByIds" parameterType="String">
+        delete from wt_payment_records where id in 
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+</mapper>
