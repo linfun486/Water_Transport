@@ -194,7 +194,7 @@ public class WtUseCreditPoints extends BaseEntity
         this.pmCardno = pmCardno;
     }
 
-    @IdCardVali(message = "项目经理身份证号格式错误")
+    @IdCardVali(message = "项目经理身份证号格式错误！")
     public String getPmCardno() 
     {
         return pmCardno;
